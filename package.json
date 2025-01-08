@@ -1,0 +1,35 @@
+{
+  "name": "captcha-onnx-ocr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "keywords": [
+    "captcha",
+    "onnx",
+    "ocr",
+    "image-processing"
+  ],
+  "author": "nullptr",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "fastify": "^5.2.1",
+    "nodemon": "^3.1.9",
+    "onnxruntime-node": "^1.20.1",
+    "pino-pretty": "^13.0.0",
+    "sharp": "^0.33.5",
+    "touch": "^3.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/meetox80/captcha-onnx-ocr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/meetox80/captcha-onnx-ocr/issues"
+  },
+  "homepage": "https://github.com/meetox80/captcha-onnx-ocr/"
+}
