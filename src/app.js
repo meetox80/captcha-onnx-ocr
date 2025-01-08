@@ -8,7 +8,9 @@
 require('dotenv').config();
 
 const Fastify = require('fastify');
+
 const MainRoutes = require('./routes/MainRoutes');
+const CaptchaController = require('./controllers/CaptchaController');
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
@@ -32,6 +34,8 @@ const _Shutdown = async (Signal) => {
 
 const _MainThread = async () => {
     try {
+        await CaptchaController.InitModel();
+
         await App.listen({
             port: process.env.PORT || 1337,
             host: '0.0.0.0'

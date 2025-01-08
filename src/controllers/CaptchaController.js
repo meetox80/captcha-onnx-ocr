@@ -7,7 +7,11 @@
 
 const ORT = require('onnxruntime-node');
 const Sharp = require('sharp');
+const Path = require('path');
 const { Tokenizer } = require('../tokenizer/tokenizer_base');
+
+let _CachedModel = null;
+let _CachedInputName = null;
 
 const _ModelData = {
     Size: [32, 128],
@@ -48,15 +52,17 @@ const SoftMax = InputArray => {
     return Exp.map(Value => Value / Sum);
 };
 
-const CreateModel = async ModelPath => {
-    const Model = await ORT.InferenceSession.create(ModelPath);
-    return { Model, InputName: Model.inputNames[0] };
+const InitModel = async () => {
+    if (_CachedModel) return;
+    const ModelPath = Path.join(__dirname, "../../models/captcha.onnx");
+    _CachedModel = await ORT.InferenceSession.create(ModelPath);
+    _CachedInputName = _CachedModel.inputNames[0];
 };
 
 const PredictImage = async Base64Input => {
-    const { Model, InputName } = await CreateModel(
-        require('path').join(__dirname, "../../models/captcha.onnx")
-    );
+    if (!_CachedModel) {
+        throw new Error('Model not initialized');
+    }
 
     if (!Base64Input?.match(/^data:image\/\w+;base64,/)) {
         throw new Error('Invalid image format');
@@ -69,8 +75,8 @@ const PredictImage = async Base64Input => {
         );
 
         const InputTensor = await TransformImage(ImageBuffer);
-        const ModelOutput = await Model.run({ [InputName]: InputTensor });
-        const ProcessedOutput = ModelOutput[Model.outputNames[0]];
+        const ModelOutput = await _CachedModel.run({ [_CachedInputName]: InputTensor });
+        const ProcessedOutput = ModelOutput[_CachedModel.outputNames[0]];
 
         if (!ProcessedOutput?.data) {
             throw new Error("Invalid model output");
@@ -105,5 +111,6 @@ const PredictImage = async Base64Input => {
 };
 
 module.exports = {
-    PredictImage
+    PredictImage,
+    InitModel
 };
