@@ -11,7 +11,7 @@ pnpm install
 ```
 npm run start
 ```
-> (/) POST Request:
+> POST Request body:
 ```
 {
     "image": "data:image/jpeg;base64,<...>"
