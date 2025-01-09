@@ -5,7 +5,9 @@
   "main": "src/app.js",
   "scripts": {
     "start": "node src/app.js",
-    "dev": "nodemon src/app.js"
+    "start:dev": "nodemon src/app.js",
+    "test": "mocha tests/config.test.js",
+    "test:dev": "nodemon --watch tests --exec 'mocha tests/config.test.js'"
   },
   "keywords": [
     "captcha",
@@ -16,8 +18,13 @@
   "author": "nullptr",
   "license": "MIT",
   "dependencies": {
+    "assert": "^2.1.0",
+    "axios": "^1.7.9",
+    "canvas": "^3.0.1",
+    "cli-progress": "^3.12.0",
     "dotenv": "^16.4.7",
     "fastify": "^5.2.1",
+    "mocha": "^11.0.1",
     "nodemon": "^3.1.9",
     "onnxruntime-node": "^1.20.1",
     "pino-pretty": "^13.0.0",
