@@ -3,17 +3,13 @@ AI-powered CAPTCHA recognition system leveraging ONNX for accurate and efficient
 
 
 ## Installation
-To install the dependencies, run:
 ```sh
 pnpm install
 ```
 
 ## Usage
-Runtime: ```npm run start```
-
-Defaults: ```<process.env.HOST>:<process.env.PORT>```
-
-(/) (POST) Request:
+```npm run start```
+> (/) POST Request:
 ```
 {
     "image": "data:image/jpeg;base64,<...>"
@@ -21,7 +17,7 @@ Defaults: ```<process.env.HOST>:<process.env.PORT>```
 ```
 
 ## Running Tests
-When running tests, remember to **launch the server seperately**
+> Remember to **launch the server seperately**
 ```sh
 npm run start
 ```
