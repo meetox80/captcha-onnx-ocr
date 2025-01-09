@@ -1,16 +1,32 @@
 # captcha-onnx-ocr
 AI-powered CAPTCHA recognition system leveraging ONNX for accurate and efficient verification, integrated with a Node.js web API.
 
+
+## Installation
+To install the dependencies, run:
+```sh
+pnpm install
+```
+
 ## Usage
 Runtime: ```npm run start```
 
 Defaults: ```<process.env.HOST>:<process.env.PORT>```
 
-Request: 
+(/) (POST) Request:
 ```
 {
-	"image": "data:image/jpeg;base64,<...>"
+    "image": "data:image/jpeg;base64,<...>"
 }
+```
+
+## Running Tests
+When running tests, remember to **launch the server seperately**
+```sh
+npm run start
+```
+```sh
+npm run test
 ```
 
 ## Tech Stack (Libraries)
