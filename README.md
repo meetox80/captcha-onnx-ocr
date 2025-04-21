@@ -9,7 +9,7 @@ pnpm install
 
 ## Usage
 ```
-npm run start
+pnpm run start
 ```
 > POST Request body:
 ```
@@ -21,10 +21,10 @@ npm run start
 ## Running Tests
 > Remember to **launch the server seperately**
 ```sh
-npm run start # Server
+pnpm run start # Server
 ```
 ```sh
-npm run test  # Tests client
+pnpm run test  # Tests client
 ```
 
 ## Tech Stack (Libraries)
