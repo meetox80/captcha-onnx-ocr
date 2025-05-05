@@ -25,7 +25,7 @@
     "dotenv": "^16.4.7",
     "fastify": "^5.3.2",
     "mocha": "^11.1.0",
-    "nodemon": "^3.1.9",
+    "nodemon": "^3.1.10",
     "onnxruntime-node": "^1.21.1",
     "pino-pretty": "^13.0.0",
     "sharp": "^0.33.5",
